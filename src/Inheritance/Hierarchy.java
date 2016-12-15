@@ -13,7 +13,8 @@ public class Hierarchy {
         int l[] = new int [4];
         int f[] = new int [4];
         int b[] = new int [4];
-        Company[] z=new Company [4];
+        int category,age,numberChild;
+        Company[] z = new Company [4];
         System.out.println("Вводимо дані почергово для кожного працівника: 1.службовець; 2.персона; 3.робочий; 4.інженер");
         for (int i=0; i<4;i++){
             System.out.println(i+1+":");
@@ -24,16 +25,25 @@ public class Hierarchy {
             System.out.println("Введіть кількість офіційних вихідних ");
             b[i] = a.nextInt();
         }
-        z[0]=new Slujbovec(l[0],f[0],b[0]);
-        z[1]=new Persona(l[1],f[1],b[1]);
-        z[2]=new Robojuy(l[2],f[2],b[2]);
+        System.out.println("Введіть категорію для робочого");
+        category = a.nextInt();
+        System.out.println("Введіть вік персони");
+        age = a.nextInt();
+        System.out.println("Введіть кількість дітей в робочого");
+        numberChild = a.nextInt();
+        z[0]=new Slujbovec(l[0],f[0],b[0],category);
+        z[1]=new Persona(l[1],f[1],b[1],age);
+        z[2]=new Robojuy(l[2],f[2],b[2],numberChild);
         z[3]=new Injener(l[3],f[3],b[3]);
         System.out.println("\nІнформація про службовця");
         z[0].information();
+        System.out.println("Категорія: " + category);
         System.out.println("\nІнформація про персону");
         z[1].information();
+        System.out.println("Вік: " + age);
         System.out.println("\nІнформація про робочого");
         z[2].information();
+        System.out.println("Кількість дітей: " + numberChild);
         System.out.println("\nІнформація про інженера");
         z[3].information();
     }}
@@ -48,24 +58,31 @@ class Company {
     void information() {
         System.out.print("Кількість робочих місць: "+place+
                 "\nМісячна зарплата: "+zarplata+"\nКількість вихідних: "+vuhidnuy+"\n");
+
     }
 }
 
 class Slujbovec extends Company {
-    Slujbovec( int l, int f, int b) {
+    int category;
+    Slujbovec(int l, int f, int b, int c) {
         super(l,f,b);
+        category = c;
+     }
     }
-}
 
 class Persona extends Company {
-    Persona(int l, int f, int b) {
+    int age;
+    Persona(int l, int f, int b, int a) {
         super(l,f,b);
+        age = a;
     }
 }
 
 class Robojuy extends Company {
-    Robojuy( int l, int f, int b) {
+    int numberChild;
+    Robojuy( int l, int f, int b, int c) {
         super(l,f,b);
+        numberChild = c;
     }
 }
 
