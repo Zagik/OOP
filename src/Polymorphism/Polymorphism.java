@@ -4,42 +4,48 @@ package Polymorphism;
  * Created by Zahakaylo on 10.12.2016.
  */
 class Animal {
-    public void voice() {
-        //Пустий
+    String voice;
+    Animal(String v)
+    {
+        voice = v;
     }
 
 }
 
 class Dog extends Animal {
-    public void voice(){
-        System.out.println("Гав");
+    Dog (String voice)
+    {
+        super(voice);
     }
+
+
 }
 
 class Cat extends Animal{
-    public void voice() {
-        System.out.println("Мяв");
+    Cat (String voice)
+    {
+        super(voice);
     }
 }
 
 class Frog extends Animal{
-    public void voice() {
-        System.out.println("Ква");
+    Frog (String voice)
+    {
+        super(voice);
     }
 }
 
 public class Polymorphism
 {
-    
+
 
     public static void main(String[] args) {
-        Animal[] a = new Animal[]{new Cat(),
-                new Dog(),
-                new Frog(),
-                new Animal()}; // Пусто
+        Animal dog = new Dog("Гав");
+        System.out.println(dog.voice);
+        Animal cat = new Cat("Мяв");
+        System.out.println(cat.voice);
+        Animal frog = new Frog("Ква");
+        System.out.println(frog.voice);
 
-        for(int i = 0; i < a.length; i++) {
-            a[i].voice();
-        }
     }
 }
